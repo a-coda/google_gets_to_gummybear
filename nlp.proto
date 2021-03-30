@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "main";
+
+package nlp;
+
+service NLP {
+  rpc Analyze (Input) returns (Analysis) {}
+}
+
+message Input {
+  optional string text = 1;
+}
+
+message Analysis {
+  repeated Entity entities = 1;
+  repeated Sentence sentences = 2;
+  repeated Token tokens = 3;
+}
+  
+message Entity {
+  optional string text = 1;
+  optional string label = 2;
+}
+
+message Sentence {
+  optional string text = 1;
+}
+
+message Token {
+  optional string text = 1;
+  optional string tag = 2;
+  optional string label = 3;
+}
+
